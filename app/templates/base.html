@@ -3,16 +3,50 @@
 <head>
 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="theme-color" content="#2563eb">
+    <meta name="theme-color" content="#0a0612">
     <meta name="description" content="Social Bingo - Find people who match the questions!">
     <title>Soc Ops - Social Bingo</title>
     <link rel="stylesheet" href="/static/css/app.css">
+    <link rel="stylesheet" href="/static/css/cyberpunk.css">
     <link rel="icon" type="image/png" href="/static/favicon.png">
     <script src="/static/js/htmx.min.js"></script>
+    <script>
+        // Ensure body has dark class for theme, allow future toggle
+        document.documentElement.classList.add('dark');
+        document.addEventListener('DOMContentLoaded', function(){
+            document.body.classList.add('neon-pulse');
+        });
+    </script>
 </head>
 <body>
+    <button id="theme-toggle" aria-label="Toggle cyberpunk theme" title="Toggle neon theme" style="position:fixed;top:1rem;right:1rem;z-index:60;padding:0.5rem 0.75rem;border-radius:999px;background:rgba(0,0,0,0.4);color:var(--neon-cyan);border:1px solid rgba(255,255,255,0.04);backdrop-filter: blur(6px);">
+        <span id="theme-toggle-label">Neon: On</span>
+    </button>
+
     <div id="app">
         {% block content %}{% endblock %}
     </div>
+
+    <script>
+        (function(){
+            const link = Array.from(document.getElementsByTagName('link')).find(l=>l.href && l.href.endsWith('/static/css/cyberpunk.css'));
+            const toggle = document.getElementById('theme-toggle');
+            const label = document.getElementById('theme-toggle-label');
+            function setState(enabled){
+                if(link) link.disabled = !enabled;
+                localStorage.setItem('cyberpunk', enabled ? 'on' : 'off');
+                label.textContent = 'Neon: ' + (enabled ? 'On' : 'Off');
+                document.body.classList.toggle('neon-pulse', enabled);
+            }
+            // Init from storage
+            const saved = localStorage.getItem('cyberpunk');
+            if(saved === 'off') setState(false);
+            else setState(true);
+            toggle.addEventListener('click', ()=>{
+                const enabled = !(link && !link.disabled);
+                setState(enabled);
+            });
+        })();
+    </script>
 </body>
 </html>

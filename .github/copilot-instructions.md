@@ -73,3 +73,32 @@ Contacts & references
 - CONTRIBUTING.md — contributor workflow
 - README.md — project overview and commands
 - docs/ — longer design and tutorial material
+
+Design Guide — Cyberpunk Neon Theme
+----------------------------------
+
+Use when: implementing or updating UI styles that match the project's
+dark Cyberpunk Neon aesthetic.
+
+- Typography: maintain the system-ui stack for body text; for headings
+  prefer large, bold display styles (use existing `text-5xl` / `font-bold`
+  utility classes). Optionally include a modern sans (e.g., `Inter`) or a
+  monospace for retro/console elements.
+- Colors: central variables are defined in `app/static/css/cyberpunk.css`:
+  `--neon-cyan` (#00f6ff), `--neon-pink` (#ff3bd6), `--neon-purple` (#7c3aed),
+  and deep backgrounds `--bg-900` / `--bg-800`.
+- Glow & effects: prefer restrained box-shadows and subtle outer glows; use
+  the `.neon-pulse` animation for non-essential ambient motion. Avoid
+  excessive blur that reduces legibility.
+- Components: panels use semi-translucent backgrounds (`--panel`) with
+  a 1px neon-tinted border. Active/marked states use gradient fills and a
+  slightly stronger glow to indicate focus.
+- Accessibility: ensure text contrast remains sufficient; offer a low-glow
+  fallback when `prefers-reduced-motion` or for users with visual needs.
+- Toggle behavior: the theme toggle stores `cyberpunk=on|off` in
+  `localStorage`; `app/templates/base.html` toggles the `/static/css/cyberpunk.css`
+  stylesheet by enabling/disabling the link element and toggling the
+  `.neon-pulse` body class.
+
+See `app/static/css/cyberpunk.css` and `app/templates/base.html` for
+implementation examples and exact variable names.

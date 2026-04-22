@@ -1,0 +1,75 @@
+:root{
+    --bg-900: #04040a;
+    --bg-800: #0a0612;
+    --panel: rgba(10,10,20,0.6);
+    --neon-cyan: #00f6ff;
+    --neon-pink: #ff3bd6;
+    --neon-purple: #7c3aed;
+    --muted: #9aa4b2;
+}
+
+/* Page background */
+body {
+    background: radial-gradient(1200px 600px at 10% 10%, #08102a 0%, #02020a 30%, #000000 100%), linear-gradient(180deg, rgba(7,6,15,0.6), rgba(0,0,0,0.9));
+    color: var(--neon-cyan);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Links */
+a { color: var(--neon-pink); text-decoration: none; }
+a:hover { text-decoration: underline; color: var(--neon-cyan); }
+
+/* Cards and panels */
+.rounded, .shadow-sm, .shadow-xl {
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.25));
+    border: 1px solid rgba(124,58,237,0.12);
+    box-shadow: 0 6px 30px rgba(124,58,237,0.06), inset 0 1px 0 rgba(255,255,255,0.02);
+}
+
+.bg-white { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.2)); color: var(--neon-cyan); }
+.text-gray-700 { color: var(--muted); }
+
+/* Buttons */
+button {
+    background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.25));
+    color: var(--neon-cyan);
+    border: 1px solid rgba(0,246,255,0.06);
+    text-shadow: 0 1px 0 rgba(0,0,0,0.6);
+}
+button:hover { box-shadow: 0 0 18px rgba(0,246,255,0.08); }
+
+/* Bingo squares */
+.grid.grid-cols-5 button {
+    background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.3));
+    border: 1px solid rgba(255,255,255,0.03);
+    color: var(--neon-cyan);
+}
+.grid.grid-cols-5 button.bg-marked {
+    background: linear-gradient(180deg, rgba(0,246,255,0.06), rgba(255,59,214,0.04));
+    border-color: rgba(124,58,237,0.6);
+    color: #0b1020;
+    box-shadow: 0 6px 24px rgba(124,58,237,0.18), 0 0 10px rgba(255,59,214,0.08) inset;
+}
+.grid.grid-cols-5 button.bg-amber-200 {
+    background: linear-gradient(180deg, rgba(124,58,237,0.12), rgba(255,59,214,0.02));
+    border-color: rgba(255,59,214,0.6);
+    color: #0b1020;
+    box-shadow: 0 8px 30px rgba(255,59,214,0.12);
+}
+
+/* Checkmark */
+.text-green-600 { color: var(--neon-pink); text-shadow: 0 0 8px rgba(255,59,214,0.6); }
+
+/* Headings */
+.text-5xl, .text-4xl, h1 { color: var(--neon-pink); text-shadow: 0 2px 18px rgba(124,58,237,0.18); }
+
+/* Small muted text */
+.text-sm, .text-xs { color: var(--muted); }
+
+/* Utility: subtle animated glow */
+@keyframes pulse-neon {
+    0% { box-shadow: 0 0 6px rgba(124,58,237,0.06); }
+    50% { box-shadow: 0 0 22px rgba(124,58,237,0.12); }
+    100% { box-shadow: 0 0 6px rgba(124,58,237,0.06); }
+}
+.neon-pulse { animation: pulse-neon 3s infinite ease-in-out; }
