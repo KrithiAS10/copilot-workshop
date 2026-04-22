@@ -27,6 +27,12 @@ line-length = 88
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "N", "W"]
+# Enforce annotation/type-hint rules (flake8-annotations via Ruff)
+extend-select = ["ANN"]
+
+# Treat unused variables reported by F841 as errors; allow intentionally
+# unused variables using a leading underscore name (e.g. `_unused`).
+per-file-ignores = {"tests/*" = ["ANN"]}
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

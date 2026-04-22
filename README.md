@@ -1,25 +1,36 @@
 🌐 [Português (BR)](README.pt_BR.md) | [Español](README.es.md)
 
-# Soc Ops
+🌐 [Português (BR)](README.pt_BR.md) | [Español](README.es.md)
 
-Social Bingo game for in-person mixers. Find people who match the questions and get 5 in a row!
+# Soc Ops — Social Bingo for Mixers
 
+**Development checklist (required before PR):**
+
+- Lint: `uv run ruff check .`
+- Test: `uv run pytest`
+- Run/build: `uv run uvicorn app.main:app --reload --host 0.0.0.0 --port 8000`
+
+Soc Ops is a compact Social Bingo web app for in-person mixers — match traits, get five in a row, start conversations.
 ---
 
-## 📚 Lab Guide
 
-| Part | Title |
-|------|-------|
-| [**00**](https://copilot-dev-days.github.io/agent-lab-python/docs/step.html?step=00-overview) | Overview & Checklist |
-| [**01**](https://copilot-dev-days.github.io/agent-lab-python/docs/step.html?step=01-setup) | Setup & Context Engineering |
-| [**02**](https://copilot-dev-days.github.io/agent-lab-python/docs/step.html?step=02-design) | Design-First Frontend |
-| [**03**](https://copilot-dev-days.github.io/agent-lab-python/docs/step.html?step=03-quiz-master) | Custom Quiz Master |
-| [**04**](https://copilot-dev-days.github.io/agent-lab-python/docs/step.html?step=04-multi-agent) | Multi-Agent Development |
+**Highlights**
+- Compact codebase: logic in `app/`, templates in `app/templates/`, assets in `static/`.
+- Workshop material and tutorials in `workshop/` and `docs/`.
+- Tests in `tests/` and linting via `ruff`.
 
-> 📝 Lab guides are also available in the [`workshop/`](workshop/) folder for offline reading.
+Quickstart (condensed)
 
----
+```bash
+python -m venv .venv
+source .venv/bin/activate
+uv run pip install -e .[dev]
+uv run uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+```
 
-## 🚀 Getting Started
+Open http://localhost:8000 to try the app.
 
-Head to **[Part 00: Overview](https://copilot-dev-days.github.io/agent-lab-python/step.html?step=00-overview)** for prerequisites and setup instructions.
+Explore: `app/game_logic.py`, `app/game_service.py`, `app/templates/components/`.
+
+Contribute: see `CONTRIBUTING.md`. License: `LICENSE`.
+
